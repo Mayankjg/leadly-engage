@@ -3,9 +3,10 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { StatCard } from "@/components/StatCard";
 import { LeadStatusBadge } from "@/components/LeadStatusBadge";
-import { Users, TrendingUp, Phone, Bell, Plus } from "lucide-react";
+import { Users, TrendingUp, Phone, Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { NotificationBell } from "@/components/NotificationBell";
 import {
   BarChart,
   Bar,
@@ -93,9 +94,7 @@ export default function Dashboard() {
           <h1 className="text-2xl font-bold">Dashboard</h1>
           <p className="text-muted-foreground text-sm">Welcome back! Here's your CRM overview.</p>
         </div>
-        <Button onClick={() => navigate("/leads")} className="gap-2">
-          <Plus className="w-4 h-4" /> Add Lead
-        </Button>
+        <NotificationBell />
       </div>
 
       {/* Stats */}
