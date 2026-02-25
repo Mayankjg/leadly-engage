@@ -103,14 +103,68 @@ export type Database = {
         }
         Relationships: []
       }
+      notifications: {
+        Row: {
+          created_at: string
+          id: string
+          is_read: boolean
+          message: string
+          related_lead_id: string | null
+          related_reminder_id: string | null
+          title: string
+          type: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_read?: boolean
+          message: string
+          related_lead_id?: string | null
+          related_reminder_id?: string | null
+          title: string
+          type?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_read?: boolean
+          message?: string
+          related_lead_id?: string | null
+          related_reminder_id?: string | null
+          title?: string
+          type?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "notifications_related_lead_id_fkey"
+            columns: ["related_lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "notifications_related_reminder_id_fkey"
+            columns: ["related_reminder_id"]
+            isOneToOne: false
+            referencedRelation: "reminders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       reminders: {
         Row: {
           created_at: string
           id: string
           lead_id: string
           note: string | null
+          priority: string
           reminder_date: string
+          reminder_time: string | null
           status: Database["public"]["Enums"]["reminder_status"]
+          title: string | null
           type: Database["public"]["Enums"]["reminder_type"]
           user_id: string
         }
@@ -119,8 +173,11 @@ export type Database = {
           id?: string
           lead_id: string
           note?: string | null
+          priority?: string
           reminder_date: string
+          reminder_time?: string | null
           status?: Database["public"]["Enums"]["reminder_status"]
+          title?: string | null
           type?: Database["public"]["Enums"]["reminder_type"]
           user_id: string
         }
@@ -129,8 +186,11 @@ export type Database = {
           id?: string
           lead_id?: string
           note?: string | null
+          priority?: string
           reminder_date?: string
+          reminder_time?: string | null
           status?: Database["public"]["Enums"]["reminder_status"]
+          title?: string | null
           type?: Database["public"]["Enums"]["reminder_type"]
           user_id?: string
         }
