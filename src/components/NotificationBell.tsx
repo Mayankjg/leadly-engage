@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
-import { Bell, Users, CheckCircle2, AlertCircle, X } from "lucide-react";
+import { Bell, Users, CheckCircle2, AlertCircle, Clock, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useNavigate } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
+import { toast } from "sonner";
 
 interface Notification {
   id: string;
@@ -38,6 +39,17 @@ export function NotificationBell() {
           const n = payload.new as Notification;
           if (n.user_id === user.id) {
             setNotifications((prev) => [n, ...prev]);
+            // Show popup toast for every new notification
+            toast(n.title, {
+              description: n.message,
+              duration: 8000,
+              action: n.related_lead_id
+                ? {
+                    label: "View",
+                    onClick: () => navigate(`/leads/${n.related_lead_id}`),
+                  }
+                : undefined,
+            });
           }
         }
       )
@@ -74,6 +86,7 @@ export function NotificationBell() {
       case "lead_created": return <Users className="w-4 h-4 text-primary" />;
       case "reminder_completed": return <CheckCircle2 className="w-4 h-4 text-success" />;
       case "reminder_missed": return <AlertCircle className="w-4 h-4 text-destructive" />;
+      case "reminder_due": return <Clock className="w-4 h-4 text-warning" />;
       default: return <Bell className="w-4 h-4 text-warning" />;
     }
   };

@@ -160,6 +160,7 @@ export type Database = {
           id: string
           lead_id: string
           note: string | null
+          notified: boolean
           priority: string
           reminder_date: string
           reminder_time: string | null
@@ -173,6 +174,7 @@ export type Database = {
           id?: string
           lead_id: string
           note?: string | null
+          notified?: boolean
           priority?: string
           reminder_date: string
           reminder_time?: string | null
@@ -186,6 +188,7 @@ export type Database = {
           id?: string
           lead_id?: string
           note?: string | null
+          notified?: boolean
           priority?: string
           reminder_date?: string
           reminder_time?: string | null
