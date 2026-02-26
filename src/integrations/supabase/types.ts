@@ -225,8 +225,12 @@ export type Database = {
       lead_status:
         | "new"
         | "contacted"
+        | "interested"
+        | "follow_up"
         | "qualified"
         | "proposal"
+        | "proposal_sent"
+        | "negotiation"
         | "won"
         | "lost"
       reminder_status: "pending" | "completed" | "skipped"
@@ -366,7 +370,18 @@ export const Constants = {
         "excel",
         "api",
       ],
-      lead_status: ["new", "contacted", "qualified", "proposal", "won", "lost"],
+      lead_status: [
+        "new",
+        "contacted",
+        "interested",
+        "follow_up",
+        "qualified",
+        "proposal",
+        "proposal_sent",
+        "negotiation",
+        "won",
+        "lost",
+      ],
       reminder_status: ["pending", "completed", "skipped"],
       reminder_type: ["call", "email", "whatsapp", "follow_up", "meeting"],
     },

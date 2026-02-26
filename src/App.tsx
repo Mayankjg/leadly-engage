@@ -13,6 +13,7 @@ import Reminders from "./pages/Reminders";
 import Automations from "./pages/Automations";
 import Calls from "./pages/Calls";
 import CRMSettings from "./pages/CRMSettings";
+import Pipeline from "./pages/Pipeline";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -37,6 +38,7 @@ const App = () => (
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/leads" element={<Leads />} />
             <Route path="/leads/:id" element={<LeadDetail />} />
+            <Route path="/pipeline" element={<Pipeline />} />
             <Route path="/reminders" element={<Reminders />} />
             <Route path="/automations" element={<Automations />} />
             <Route path="/calls" element={<Calls />} />

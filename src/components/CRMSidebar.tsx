@@ -2,6 +2,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import {
   LayoutDashboard,
   Users,
+  Kanban,
   Bell,
   Zap,
   Phone,
@@ -17,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 const navItems = [
   { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
   { to: "/leads", icon: Users, label: "Leads" },
+  { to: "/pipeline", icon: Kanban, label: "Pipeline" },
   { to: "/reminders", icon: Bell, label: "Reminders" },
   { to: "/automations", icon: Zap, label: "Automations" },
   { to: "/calls", icon: Phone, label: "Calls" },
